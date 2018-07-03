@@ -13,14 +13,13 @@ public class CarRentalApp {
 
 	public CarRentalApp() {
 		carBookingService = new CarBookingService();
-		
-		//Check some scenarios
+
+		// Check some scenarios
 		checkMaxVehiclesBooking();
 
 	}
 
-	private void bookThisVehicle(Vehicle vehicle, String startDate,
-			int numOfDays) {
+	private void bookThisVehicle(Vehicle vehicle, String startDate, int numOfDays) {
 		try {
 
 			if (carBookingService.bookCar(vehicle, startDate, numOfDays)) {
@@ -35,17 +34,16 @@ public class CarRentalApp {
 		}
 	}
 
-    private void checkMaxVehiclesBooking(){
-    	System.out.println("Try booking ");
-    	carBookingService.printCurrentBooking();
-    	for (Vehicle vehicle: Vehicle.values()){
-	    	for (int i = 0; i < 6; i++) {
+	private void checkMaxVehiclesBooking() {
+		System.out.println("Try booking ");
+		carBookingService.printCurrentBooking();
+		for (Vehicle vehicle : Vehicle.values()) {
+			for (int i = 0; i < 6; i++) {
 				bookThisVehicle(vehicle, "07/01/2018", 2);
 			}
-    	}
-       	int total = carBookingService.printCurrentBooking();
-       	System.out.println("Total booking : " + total);
-    }
-
+		}
+		int total = carBookingService.printCurrentBooking();
+		System.out.println("Total booking : " + total);
+	}
 
 }
