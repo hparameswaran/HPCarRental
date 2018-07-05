@@ -2,8 +2,12 @@ package com.harish.rental;
 
 import java.text.ParseException;
 
-public class CarRentalApp {
 
+
+public class CarRentalApp {
+	
+	
+	
 	private CarBookingService carBookingService;
 
 	public static void main(String[] args) {
@@ -14,16 +18,18 @@ public class CarRentalApp {
 	public CarRentalApp() {
 		carBookingService = new CarBookingService();
 
-		// Check some scenarios
-		checkMaxVehiclesBooking();
+		// Check some scenarios  - moved to junit
+		//checkMaxVehiclesBooking();
 
 	}
 
-	private void bookThisVehicle(Vehicle vehicle, String startDate, int numOfDays) {
+	public boolean bookThisVehicle(Vehicle vehicle, String startDate, int numOfDays) {
+		boolean booked = false;
 		try {
 
 			if (carBookingService.bookCar(vehicle, startDate, numOfDays)) {
 				System.out.println("Booked: " + vehicle + " From: " + startDate + " Days:" + numOfDays);
+				booked = true;
 			} else {
 				System.out.println("Not Available : " + vehicle + " From: " + startDate + " Days:" + numOfDays);
 			}
@@ -32,18 +38,14 @@ public class CarRentalApp {
 
 			e.printStackTrace();
 		}
+		return booked;
 	}
-
-	private void checkMaxVehiclesBooking() {
-		System.out.println("Try booking ");
-		carBookingService.printCurrentBooking();
-		for (Vehicle vehicle : Vehicle.values()) {
-			for (int i = 0; i < 6; i++) {
-				bookThisVehicle(vehicle, "07/01/2018", 2);
-			}
-		}
-		int total = carBookingService.printCurrentBooking();
-		System.out.println("Total booking : " + total);
+    
+	public int  currentBooking() {
+		return carBookingService.printCurrentBooking();
 	}
+	
+	
+	
 
 }

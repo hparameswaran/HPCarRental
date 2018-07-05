@@ -53,8 +53,9 @@ public class CarBookingService {
 
 	private boolean checkIfDateCollides(Booking booking, Date checkDate) {
 		boolean collides = false;
+		//Start date is included in booking. end date is 
 		if (booking.getStartDate().compareTo(checkDate) <= 0) {
-			if (booking.getEndDate().compareTo(checkDate) >= 0) {
+			if (booking.getEndDate().compareTo(checkDate) > 0) {
 				// this means the checkDate is
 				collides = true;
 			}
@@ -63,7 +64,7 @@ public class CarBookingService {
 	}
 
 	private Date convertStringToDate(String date) throws ParseException {
-		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
 		Date convDate = (Date) sdf.parse(date);
 		return convDate;
 	}

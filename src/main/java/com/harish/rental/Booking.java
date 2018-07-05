@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Booking {
 	private Vehicle carType;
-	private Date startDate;
+	private Date startDate;  
 	private Date endDate;
 
 	public Booking(Vehicle carType, Date startDate, Date endDate) {
