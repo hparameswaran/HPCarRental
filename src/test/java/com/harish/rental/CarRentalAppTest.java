@@ -3,6 +3,7 @@ package com.harish.rental;
 import static org.junit.Assert.*;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 import org.junit.Test;
@@ -11,8 +12,9 @@ public class CarRentalAppTest {
 
 	@Test
 	public void testSimpleCase1() {
+		
+		
 		CarRentalApp carRentalAppTest = new CarRentalApp();
-	   
 		int booking = carRentalAppTest.currentBooking();
 		assertEquals(booking,0);
 		for (Vehicle vehicle : Vehicle.values()) {
@@ -32,7 +34,9 @@ public class CarRentalAppTest {
 		CarRentalApp carRentalAppTest = new CarRentalApp();
 		
 		LocalDate today = LocalDate.now();
-	           
+	    
+		
+		
 	    int booking = carRentalAppTest.currentBooking();
 		assertEquals(booking,0);
 		for(int i=1;i<=10;i++) {
