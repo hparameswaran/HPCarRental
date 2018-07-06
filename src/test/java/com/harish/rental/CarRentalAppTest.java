@@ -11,9 +11,13 @@ import org.junit.Test;
 public class CarRentalAppTest {
 
 	@Test
-	public void testSimpleCase1() {
+	public void testMaxVehiclebooking() {
 		
-		
+		/**
+		 * We try to book 6 Vehicles of each type for same start/end date
+		 * Since we only have 4 max vehicles last two booking will not happen
+		 * on each vehicle type
+		 */
 		CarRentalApp carRentalAppTest = new CarRentalApp();
 		int booking = carRentalAppTest.currentBooking();
 		assertEquals(booking,0);
@@ -25,18 +29,20 @@ public class CarRentalAppTest {
 		booking = carRentalAppTest.currentBooking();
 		assertEquals(booking,12);
 		System.out.println("Total booking : " + booking);
-	
+		System.out.println("Simple case try to book 6 vehicles of each type from same start/end, PASSED");
 	}
 	
 		
 	@Test
-	public void testSimpleCase2() {
+	public void testMaxSedanForTenDays() {
+		
+		/**
+		 * We try to book 4 sedans for one day for each subsequent day (upto 10 days)
+		 * we should be successful for all booking
+		 * on each vehicle type
+		 */
 		CarRentalApp carRentalAppTest = new CarRentalApp();
-		
 		LocalDate today = LocalDate.now();
-	    
-		
-		
 	    int booking = carRentalAppTest.currentBooking();
 		assertEquals(booking,0);
 		for(int i=1;i<=10;i++) {
@@ -51,15 +57,19 @@ public class CarRentalAppTest {
 		boolean booked = carRentalAppTest.bookThisVehicle(Vehicle.SEDAN, today.toString(), 1);
 		assertFalse(booked);
 		System.out.println("Total booking : " + booking);
+		System.out.println("Simple case 4 sedans for one day for each subsequent day (upto 10 days), PASSED");
 	    
 	    
 	}
 	
 	
 	@Test
-	public void testSimpleCase3() {
+	public void testMaxSedanForFourdays() {
+		/**
+		 * We try to book 4 sedans for four days for each subsequent day (upto 5 days)
+		 * it will succeed the first time and then fifth day
+		 */
 		CarRentalApp carRentalAppTest = new CarRentalApp();
-		
 		LocalDate today = LocalDate.now();
 	    int booking = carRentalAppTest.currentBooking();
 		assertEquals(booking,0);
@@ -76,6 +86,7 @@ public class CarRentalAppTest {
 		boolean booked = carRentalAppTest.bookThisVehicle(Vehicle.SEDAN, today.toString(), 2);
 		assertFalse(booked);
 		
+		System.out.println("Simple 4 sedans for four days for each subsequent day (upto 5 days), PASSED");
 		
 	}
 
