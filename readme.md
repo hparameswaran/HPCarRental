@@ -12,7 +12,7 @@ Main classes
 - gradle 4.8.1
 
 ## Building and running
-- Unzaip the code.
+- Unzip the code.
 - open command prompt inside the folder that was unzipped (HPCarRental)
 - run "gradle build -info"  this will build and run the Jnits
 
